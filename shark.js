@@ -7,11 +7,11 @@ class Shark {
   }
 
   draw() {
-    this.x -= 1;
+    this.x -= 2;
     image(game.sharkImg, this.x, this.y, this.width, this.height);
   }
   collides(obj) {
-    if (this.x + this.width - 30 < obj.x || obj.x + 100 < this.x) {
+    if (this.x + this.width - 30 < obj.x || obj.x + 80 < this.x) {
       return false;
     }
     if (this.y + this.height - 30 < obj.y || obj.y + 50 < this.y) {
