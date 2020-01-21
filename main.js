@@ -5,19 +5,18 @@ const again = document.getElementById("again");
 
 const game = new Game();
 
-document.getElementById("life").innerHTML = game.life;
-document.getElementById("score").innerHTML = game.score;
-document.getElementById("highScore").innerHTML = game.highScore;
-document.getElementById("level").innerHTML = 1;
-
 start.onclick = function() {
   game.start = true;
+  game.gameSound.play();
+  game.gameSound.loop();
   document.getElementById("start-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.remove("hidden");
 };
 
 again.onclick = function() {
   game.start = true;
+  game.gameSound.play();
+  game.gameSound.loop();
   game.shrimps = [];
   game.lobsters = [];
   game.sharks = [];

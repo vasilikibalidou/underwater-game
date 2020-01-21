@@ -8,6 +8,7 @@ class Game {
     this.life = 3;
     this.score = 0;
     this.highScore = 0;
+    this.level = 1;
     this.start = false;
   }
   init() {
@@ -18,6 +19,10 @@ class Game {
     this.lobsterImg = loadImage("assets/lobster.png");
     this.sharkImg = loadImage("assets/shark.png");
     this.hookImg = loadImage("assets/hook.png");
+    this.gameSound = loadSound("assets/game.mp3");
+    this.gameOverSound = loadSound("assets/game-over.wav");
+    this.pointSound = loadSound("assets/point.wav");
+    this.collisionSound = loadSound("assets/bump.wav");
   }
   draw() {
     this.background.draw();
@@ -28,7 +33,7 @@ class Game {
     this.shrimps.forEach(shrimp => {
       if (shrimp.collides(this.player)) {
         this.score++;
-        document.getElementById("score").innerHTML = this.score;
+        this.pointSound.play();
       }
     });
     this.shrimps = this.shrimps.filter(
@@ -47,7 +52,7 @@ class Game {
     this.lobsters.forEach(lobster => {
       if (lobster.collides(this.player)) {
         this.score += 5;
-        document.getElementById("score").innerHTML = this.score;
+        this.pointSound.play();
       }
     });
     this.lobsters = this.lobsters.filter(
@@ -61,7 +66,7 @@ class Game {
       }.bind(this)
     );
     if (this.score >= 20) {
-      document.getElementById("level").innerHTML = 2;
+      this.level = 2;
       if (frameCount % 180 === 0) {
         this.sharks.push(new Shark());
       }
@@ -72,7 +77,7 @@ class Game {
     this.sharks.forEach(shark => {
       if (shark.collides(this.player)) {
         this.life--;
-        document.getElementById("life").innerHTML = this.life;
+        this.collisionSound.play();
       }
     });
     this.sharks = this.sharks.filter(
@@ -83,7 +88,7 @@ class Game {
       }.bind(this)
     );
     if (this.score >= 40) {
-      document.getElementById("level").innerHTML = 3;
+      this.level = 3;
       if (frameCount % 180 === 0) {
         this.hooks.push(new Hook());
       }
@@ -94,7 +99,7 @@ class Game {
     this.hooks.forEach(hook => {
       if (hook.collides(this.player)) {
         this.life--;
-        document.getElementById("life").innerHTML = this.life;
+        this.collisionSound.play();
       }
     });
     this.hooks = this.hooks.filter(
@@ -105,16 +110,21 @@ class Game {
       }.bind(this)
     );
     if (this.life === 0) {
-      console.log("game over");
       this.start = false;
       if (this.score > this.highScore) {
         this.highScore = this.score;
       }
+      this.gameSound.stop();
+      this.gameOverSound.play();
       document.getElementById("game-screen").classList.add("hidden");
       document.getElementById("end-screen").classList.remove("hidden");
       document.getElementById("end-score").innerHTML = this.score;
       document.getElementById("end-highScore").innerHTML = this.highScore;
     }
+    document.getElementById("score").innerHTML = this.score;
+    document.getElementById("level").innerHTML = this.level;
+    document.getElementById("life").innerHTML = this.life;
+    document.getElementById("highScore").innerHTML = this.highScore;
     this.shrimps.forEach(function(shrimp) {
       shrimp.draw();
     });
