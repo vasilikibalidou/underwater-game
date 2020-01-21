@@ -6,6 +6,7 @@ class Game {
     this.sharks = [];
     this.hooks = [];
     this.life = 3;
+    this.score = 0;
     this.start = false;
   }
   init() {
@@ -25,8 +26,8 @@ class Game {
     }
     this.shrimps.forEach(shrimp => {
       if (shrimp.collides(this.player)) {
-        score++;
-        document.getElementById("score").innerHTML = score;
+        this.score++;
+        document.getElementById("score").innerHTML = this.score;
       }
     });
     this.shrimps = this.shrimps.filter(
@@ -44,8 +45,8 @@ class Game {
     }
     this.lobsters.forEach(lobster => {
       if (lobster.collides(this.player)) {
-        score += 5;
-        document.getElementById("score").innerHTML = score;
+        this.score += 5;
+        document.getElementById("score").innerHTML = this.score;
       }
     });
     this.lobsters = this.lobsters.filter(
@@ -58,6 +59,12 @@ class Game {
         }
       }.bind(this)
     );
+    if (this.score > 20) {
+      document.getElementById("level").innerHTML = 2;
+      if (frameCount % 180 === 0) {
+        this.sharks.push(new Shark());
+      }
+    }
     if (frameCount % 240 === 0) {
       this.sharks.push(new Shark());
     }
@@ -80,6 +87,12 @@ class Game {
         }
       }.bind(this)
     );
+    if (this.score > 40) {
+      document.getElementById("level").innerHTML = 3;
+      if (frameCount % 180 === 0) {
+        this.hooks.push(new Hook());
+      }
+    }
     if (frameCount % 240 === 0) {
       this.hooks.push(new Hook());
     }
@@ -93,7 +106,7 @@ class Game {
         this.start = false;
         document.getElementById("game-screen").classList.add("hidden");
         document.getElementById("end-screen").classList.remove("hidden");
-        document.getElementById("end-score").innerHTML = score;
+        document.getElementById("end-score").innerHTML = this.score;
       }
     });
     this.hooks = this.hooks.filter(

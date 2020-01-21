@@ -1,12 +1,13 @@
 const width = 850;
 const height = 550;
-let score = 0;
 const start = document.getElementById("start");
 const again = document.getElementById("again");
 
 const game = new Game();
 
 document.getElementById("life").innerHTML = game.life;
+document.getElementById("score").innerHTML = game.score;
+document.getElementById("level").innerHTML = 1;
 
 start.onclick = function() {
   game.start = true;
@@ -23,9 +24,10 @@ again.onclick = function() {
   game.player.x = game.player.image.width;
   game.player.y = height / 2;
   game.life = 3;
-  score = 0;
-  document.getElementById("score").innerHTML = score;
+  game.score = 0;
+  document.getElementById("score").innerHTML = game.score;
   document.getElementById("life").innerHTML = game.life;
+  document.getElementById("level").innerHTML = 1;
   document.getElementById("end-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.remove("hidden");
 };

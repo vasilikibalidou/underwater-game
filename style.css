@@ -51,6 +51,10 @@ body {
   border-radius: 10px;
   background-color: limegreen;
 }
+#start-screen h3 {
+  padding-bottom: 20px;
+  font-size: 25px;
+}
 #start-screen.hidden {
   display: none;
 }

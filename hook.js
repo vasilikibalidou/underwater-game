@@ -7,7 +7,10 @@ class Hook {
   }
 
   draw() {
-    this.y += 0.5;
+    if (score > 40) {
+      this.y += 2;
+    }
+    this.y += 1;
     image(game.hookImg, this.x, this.y, this.width, this.height);
   }
   collides(obj) {
