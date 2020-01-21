@@ -7,6 +7,7 @@ const game = new Game();
 
 document.getElementById("life").innerHTML = game.life;
 document.getElementById("score").innerHTML = game.score;
+document.getElementById("highScore").innerHTML = game.highScore;
 document.getElementById("level").innerHTML = 1;
 
 start.onclick = function() {
@@ -26,6 +27,7 @@ again.onclick = function() {
   game.life = 3;
   game.score = 0;
   document.getElementById("score").innerHTML = game.score;
+  document.getElementById("highScore").innerHTML = game.highScore;
   document.getElementById("life").innerHTML = game.life;
   document.getElementById("level").innerHTML = 1;
   document.getElementById("end-screen").classList.add("hidden");

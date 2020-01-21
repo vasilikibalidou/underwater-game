@@ -7,6 +7,7 @@ class Game {
     this.hooks = [];
     this.life = 3;
     this.score = 0;
+    this.highScore = 0;
     this.start = false;
   }
   init() {
@@ -59,7 +60,7 @@ class Game {
         }
       }.bind(this)
     );
-    if (this.score > 20) {
+    if (this.score >= 20) {
       document.getElementById("level").innerHTML = 2;
       if (frameCount % 180 === 0) {
         this.sharks.push(new Shark());
@@ -73,12 +74,6 @@ class Game {
         this.life--;
         document.getElementById("life").innerHTML = this.life;
       }
-      if (this.life === 0) {
-        console.log("game over");
-        this.start = false;
-        document.getElementById("game-screen").classList.add("hidden");
-        document.getElementById("end-screen").classList.remove("hidden");
-      }
     });
     this.sharks = this.sharks.filter(
       function(shark) {
@@ -87,7 +82,7 @@ class Game {
         }
       }.bind(this)
     );
-    if (this.score > 40) {
+    if (this.score >= 40) {
       document.getElementById("level").innerHTML = 3;
       if (frameCount % 180 === 0) {
         this.hooks.push(new Hook());
@@ -101,13 +96,6 @@ class Game {
         this.life--;
         document.getElementById("life").innerHTML = this.life;
       }
-      if (this.life === 0) {
-        console.log("game over");
-        this.start = false;
-        document.getElementById("game-screen").classList.add("hidden");
-        document.getElementById("end-screen").classList.remove("hidden");
-        document.getElementById("end-score").innerHTML = this.score;
-      }
     });
     this.hooks = this.hooks.filter(
       function(hook) {
@@ -116,6 +104,17 @@ class Game {
         }
       }.bind(this)
     );
+    if (this.life === 0) {
+      console.log("game over");
+      this.start = false;
+      if (this.score > this.highScore) {
+        this.highScore = this.score;
+      }
+      document.getElementById("game-screen").classList.add("hidden");
+      document.getElementById("end-screen").classList.remove("hidden");
+      document.getElementById("end-score").innerHTML = this.score;
+      document.getElementById("end-highScore").innerHTML = this.highScore;
+    }
     this.shrimps.forEach(function(shrimp) {
       shrimp.draw();
     });

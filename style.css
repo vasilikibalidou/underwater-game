@@ -20,11 +20,16 @@ body {
   align-items: center;
 }
 #end-screen h1 {
-  font-size: 100px;
+  font-size: 80px;
 }
 #end-screen h2 {
-  font-size: 60px;
-  padding-bottom: 50px;
+  font-size: 50px;
+  margin-top: -30px;
+}
+#end-screen h3 {
+  font-size: 30px;
+  margin-top: -20px;
+  padding-bottom: 20px;
 }
 #again {
   width: 300px;
