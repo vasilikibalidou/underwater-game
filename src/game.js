@@ -112,6 +112,7 @@ class Game {
       this.start = false;
       let highScore = this.score;
       if (this.score > parseInt(localStorage.getItem("highScore"))) {
+        highScore = this.score;
         localStorage.setItem("highScore", highScore);
       }
       this.gameSound.stop();
@@ -119,16 +120,13 @@ class Game {
       document.getElementById("game-screen").classList.add("hidden");
       document.getElementById("end-screen").classList.remove("hidden");
       document.getElementById("end-score").innerHTML = this.score;
-      document.getElementById("end-highScore").innerHTML = localStorage.getItem(
-        "highScore"
-      );
+      document.getElementById("end-highScore").innerHTML =
+        localStorage.highScore;
     }
     document.getElementById("score").innerHTML = this.score;
     document.getElementById("level").innerHTML = this.level;
     document.getElementById("life").innerHTML = this.life;
-    document.getElementById("highScore").innerHTML = localStorage.getItem(
-      "highScore"
-    );
+    document.getElementById("highScore").innerHTML = localStorage.highScore;
     this.shrimps.forEach(function(shrimp) {
       shrimp.draw();
     });
