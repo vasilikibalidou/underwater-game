@@ -28,12 +28,13 @@ again.onclick = function() {
   game.player.y = height / 2;
   game.life = 3;
   game.score = 0;
+  game.level = 1;
   document.getElementById("score").innerHTML = game.score;
+  document.getElementById("level").innerHTML = game.level;
   document.getElementById("highScore").innerHTML = localStorage.getItem(
     "highScore"
   );
   document.getElementById("life").innerHTML = game.life;
-  document.getElementById("level").innerHTML = 1;
   document.getElementById("end-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.remove("hidden");
 };

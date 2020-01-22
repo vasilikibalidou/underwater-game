@@ -7,7 +7,7 @@ class Hook {
   }
 
   draw() {
-    if (score >= 40) {
+    if (score >= 50) {
       this.y += 2;
     }
     this.y += 1;

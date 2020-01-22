@@ -8,7 +8,6 @@ class Game {
     this.life = 3;
     this.score = 0;
     this.level = 1;
-    this.highScore = 0;
     this.start = false;
   }
   init() {
@@ -65,7 +64,7 @@ class Game {
         }
       }.bind(this)
     );
-    if (this.score >= 20) {
+    if (this.score >= 25) {
       this.level = 2;
       if (frameCount % 180 === 0) {
         this.sharks.push(new Shark());
@@ -87,7 +86,7 @@ class Game {
         }
       }.bind(this)
     );
-    if (this.score >= 40) {
+    if (this.score >= 50) {
       this.level = 3;
       if (frameCount % 180 === 0) {
         this.hooks.push(new Hook());
@@ -112,7 +111,6 @@ class Game {
     if (this.life === 0) {
       this.start = false;
       if (this.score > parseInt(localStorage.getItem("highScore"))) {
-        this.highScore = this.score;
         let highScore = this.score;
         localStorage.setItem("highScore", highScore);
       }
