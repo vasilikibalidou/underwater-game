@@ -110,8 +110,10 @@ class Game {
     );
     if (this.life === 0) {
       this.start = false;
-      let highScore = this.score;
+      let highScore = 0;
+      localStorage.setItem("highScore", highScore);
       if (this.score > parseInt(localStorage.getItem("highScore"))) {
+        highScore = this.score;
         localStorage.setItem("highScore", highScore);
       }
       this.gameSound.stop();
