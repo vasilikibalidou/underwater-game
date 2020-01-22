@@ -11,6 +11,9 @@ body {
 #end-screen.hidden {
   display: none;
 }
+#game-screen {
+  cursor: none;
+}
 #game-screen.hidden {
   display: none;
 }

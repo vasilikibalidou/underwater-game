@@ -11,6 +11,9 @@ start.onclick = function() {
   game.gameSound.loop();
   document.getElementById("start-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.remove("hidden");
+  document.getElementById("highScore").innerHTML = localStorage.getItem(
+    "highScore"
+  );
 };
 
 again.onclick = function() {
@@ -26,7 +29,9 @@ again.onclick = function() {
   game.life = 3;
   game.score = 0;
   document.getElementById("score").innerHTML = game.score;
-  document.getElementById("highScore").innerHTML = game.highScore;
+  document.getElementById("highScore").innerHTML = localStorage.getItem(
+    "highScore"
+  );
   document.getElementById("life").innerHTML = game.life;
   document.getElementById("level").innerHTML = 1;
   document.getElementById("end-screen").classList.add("hidden");
