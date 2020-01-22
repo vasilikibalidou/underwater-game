@@ -108,11 +108,11 @@ class Game {
         }
       }.bind(this)
     );
+    if (localStorage.getItem("highScore") == null) {
+      localStorage.setItem("highScore", 0);
+    }
     if (this.life === 0) {
       this.start = false;
-      if (localStorage.getItem("highScore") == null) {
-        localStorage.setItem("highScore", 0);
-      }
       if (this.score > parseInt(localStorage.getItem("highScore"))) {
         localStorage.setItem("highScore", this.score);
       }
