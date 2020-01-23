@@ -7,7 +7,7 @@ class Lobster {
   }
 
   draw() {
-    this.x -= 3;
+    this.x -= 2.5;
     image(game.lobsterImg, this.x, this.y, this.width, this.height);
   }
   collides(obj) {

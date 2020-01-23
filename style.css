@@ -1,8 +1,13 @@
+@font-face {
+  font-family: arcade;
+  src: url(ARCADE.TTF);
+}
 body {
   display: flex;
   justify-content: center;
   background-image: url("assets/background-org.png");
   background-size: cover;
+  font-family: arcade;
 }
 #info {
   display: flex;
@@ -24,6 +29,7 @@ body {
 }
 #end-screen h1 {
   font-size: 80px;
+  text-shadow: 3px 3px #33ff57;
 }
 #end-screen h2 {
   font-size: 50px;
@@ -35,12 +41,13 @@ body {
   padding-bottom: 20px;
 }
 #again {
-  width: 300px;
-  padding: 20px;
-  font-size: 30px;
-  border: 2px solid #595959;
-  border-radius: 10px;
-  background-color: limegreen;
+  padding: 20px 30px 15px 30px;
+  font-size: 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #33ff57;
+  font-family: arcade;
+  cursor: pointer;
 }
 #start-screen {
   display: flex;
@@ -50,14 +57,16 @@ body {
 }
 #start-screen h1 {
   font-size: 60px;
+  text-shadow: 3px 3px #33ff57;
 }
 #start {
-  width: 200px;
-  padding: 20px;
-  font-size: 30px;
-  border: 2px solid #595959;
-  border-radius: 10px;
-  background-color: limegreen;
+  padding: 20px 30px 15px 30px;
+  font-size: 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #33ff57;
+  font-family: arcade;
+  cursor: pointer;
 }
 #start-screen h3 {
   padding-bottom: 20px;
@@ -65,4 +74,24 @@ body {
 }
 #start-screen.hidden {
   display: none;
+}
+.blinking {
+  animation: blinkingText 1.2s infinite;
+}
+@keyframes blinkingText {
+  0% {
+    color: #000;
+  }
+  50% {
+    color: #000;
+  }
+  60% {
+    color: transparent;
+  }
+  90% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
 }
